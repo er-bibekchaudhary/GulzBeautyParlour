@@ -16,6 +16,18 @@
             background:gray;
             height:100px;  
         }
+        .SiteNav
+{
+    background-color:#303B47;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+                .SiteNav a
+{
+    padding-left:20px;
+    font-weight:bold;
+    color:#B0C4DB;  
+}
     </style>
 
     <asp:ContentPlaceHolder id="head" runat="server">
@@ -39,7 +51,14 @@
                 
             </div>
         </div>
-
+        <div class="row SiteNav">
+        
+            <div class="col-sm-12">
+                <a href="Billing.aspx">Billing</a>
+                <a href="Members.aspx">Members</a>
+                <a href="Users.aspx">Account </a>
+            </div>
+        </div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
