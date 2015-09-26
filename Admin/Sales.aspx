@@ -63,15 +63,12 @@
         <div class="col-sm-3">
     
             <ol>
-                <li><a href="Services.aspx">Services</a></li>
-                <li>Sales</li>
-
-                <ul>
+                
+                
                     <li><asp:LinkButton ID="LnkCheckSales" runat="server">Check Sales</asp:LinkButton></li>
                     <li><asp:LinkButton ID="LnkPrintMonth" runat="server">Print Monthly report</asp:LinkButton></li>
-                </ul>
-            
-                <li><a href="UserMgnt.aspx">User Management</a></li>
+                
+               
             </ol>
         </div>
         

@@ -45,14 +45,11 @@
     <div class="row">
         <div class="col-sm-3">
             <ol>
-                <li><a href="Services.aspx">Services</a></li>
-                <li><a href="Sales.aspx">Sales</a></li>
-                <li>User Management</li>
-                <ul>
+               
                     <li><asp:LinkButton ID="LnkAddUsers" runat="server" onclick="LnkAddUsers_Click">Add Users</asp:LinkButton></li>
                     <li><asp:LinkButton ID="LnkEditUsers" runat="server" onclick="LnkEditUsers_Click">Edit Users</asp:LinkButton></li>
                     <li><asp:LinkButton ID="LnkChngPassword" runat="server" onclick="LnkChngPassword_Click">Admin Password</asp:LinkButton></li>
-                </ul>
+               
             </ol>
         </div>
         <div class="col-sm-9">

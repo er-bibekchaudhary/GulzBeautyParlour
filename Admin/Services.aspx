@@ -113,13 +113,12 @@
     <div class="row">
         <div class="col-sm-3">
     <ol>
-    <li>Services</li>
-    <ul>
+    
+    
         <li class="menu"><asp:LinkButton runat="server" ID="lnkAddService" OnClick="lnkAddService_Click">Add Service</asp:LinkButton></li>
         <li class="menu"><asp:LinkButton runat="server" ID="lnkEditService" OnClick="lnkEditService_Click">Edit Service</asp:LinkButton></li>
-    </ul>
-    <li><a href="Sales.aspx">Sales</a></li>
-    <li><a href="UserMgnt.aspx">User Management</a></li>
+    
+    
 </ol>
  </div>
         
