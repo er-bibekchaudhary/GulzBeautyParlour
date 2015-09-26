@@ -15,11 +15,13 @@
         }
         #divHeader
         {
-            border-bottom:2px solid red;
+            background-color:#4B5865;
+            color:#f6f6ff;
+            /*border-bottom:2px solid red;
             border-top:2px solid red;
             font-style:normal;
             color:Red;
-            background-color:#7ABF2C; 
+            background-color:#7ABF2C;*/ 
                    
         }
         #divFooter
