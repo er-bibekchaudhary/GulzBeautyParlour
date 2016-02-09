@@ -6,28 +6,48 @@
 <head runat="server">
     
     <link href="Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="Bootstrap/UserStyle.css" rel="stylesheet" />
     <script src="Bootstrap/bootstrap.min.js"></script>
     <script src="Bootstrap/jquery.min.js"></script>
-    
-    
     <style type="text/css">
-        #DivHead
-        {
-            background:gray;
-            height:100px;  
+        .container {
+            max-width:1170px;
         }
-        .SiteNav
-{
-    background-color:#303B47;
-    padding-top:10px;
-    padding-bottom:10px;
-}
-                .SiteNav a
-{
-    padding-left:20px;
-    font-weight:bold;
-    color:#B0C4DB;  
-}
+        .header {
+            background:#fff;
+            padding:10px 0;
+        }
+        .nav {
+            background:#9a0d1f;
+        }
+        .navigation ul {
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .navigation ul:after {
+            content:"";
+            clear:both;
+            display:block;
+        }
+        .navigation ul li {
+            float:left;
+        }
+        .navigation ul li a {
+            padding:7px 15px;
+            display:inline-block;
+            text-decoration:none;
+            color:#fff;
+        }
+        .navigation ul li a:hover {
+            background:#c02d3f;
+        }
+        .content {
+            background:#fff;
+        }
+        .footer {
+            background:#f00;
+        }
     </style>
 
     <asp:ContentPlaceHolder id="head" runat="server">
@@ -35,35 +55,33 @@
 </head>
 
 <body>
-    <form id="form1" runat="server">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12" id="DivHead">
-                    <center>
-                    <br />
-   
-                    <h3>
-                    Welcome to Galz Beauty Parlour Billings
-
-                    </h3>
-                        
-                    </center>
-                
-            </div>
+<form id="form1" runat="server">
+    <div class="header">
+        <div class="container">
+            <h3 style="text-align:center;">Welcome to Galz Beauty Parlour Billings</h3>
         </div>
-        <div class="row SiteNav">
-        
-            <div class="col-sm-12">
-                <a href="Billing.aspx">Billing</a>
-                <a href="Members.aspx">Members</a>
-                <a href="Users.aspx">Account </a>
-            </div>
-        </div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    
     </div>
-    </form>
+    <div class="nav">
+        <div class="container">
+            <div class="navigation">
+                <ul>
+                    <li><a href="Billing.aspx">Billing</a></li>
+                    <li><a href="Members.aspx">Members</a></li>
+                    <li><a href="Users.aspx">Account </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+        </div>
+    </div>
+</form>
 </body>
 </html>

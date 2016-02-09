@@ -24,12 +24,12 @@
             background-color:#7ABF2C;*/ 
                    
         }
-        #divFooter
-        {
-            border-bottom:2px solid red;
-             background-color:#527F1D;
-            
-        }
+         .footer {
+             padding:7px 0;
+             text-align:center;
+             background:#303b47;
+             color:#fff;
+         }
         .SiteNav
 {
     background-color:#303B47;
@@ -43,13 +43,6 @@
     font-weight:bold;
     color:#B0C4DB;  
 }
-        #divPageBody
-        {
-            
-            border-bottom:2px solid red;
-            background-color:#A3FF3B;
-            min-height:600px;
-        }
         
         #divPageBody ul
         {
@@ -64,13 +57,8 @@
         } 
 
 
-        #divFooter h2
-        {
+        #divFooter{
             background-color:#7E91A7; 
-            padding-top:10px;
-            padding-bottom:10px
-            /*margin:0px;
-            padding:0px;*/
         }      
     </style>
 
@@ -79,8 +67,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="divHeader">
     <div class="container">
-        <div id="divHeader" class="row">
+        <divclass="row">
             <div  class="col-sm-2">
                 <img src="../Assets/Images/admin.jpg" height='120px' width='120px'/>
             </div>
@@ -90,25 +79,26 @@
             </div>
             
         </div>
-         <div class="row SiteNav">
-        
+        </div>
+        <div class="SiteNav">
+            <div class="container">
+         <div class="row">
             <div class="col-sm-12">
                 <a href="Services.aspx">Services</a>
                 <a href="Sales.aspx">Sales</a>
                 <a href="UserMgnt.aspx">User Management</a>
             </div>
         </div>
-    
+                </div>
+        </div>
 
     <div id="divPageBody" class="row">
         <asp:ContentPlaceHolder id="ContentBody" runat="server">
-        
         </asp:ContentPlaceHolder>
     </div>
-    
-    <div id="divFooter" class="row">
-    <center>
-    <h2>Galz Beauty Parlour</h2></center>
+ 
+    <div class="footer">
+        <p>Galz Beauty Parlour</p>
     </div>
 
 </div>

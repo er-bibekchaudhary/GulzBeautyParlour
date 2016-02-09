@@ -30,43 +30,11 @@
         }
         //-->
     </script>
-
-    <style type="text/css">
-        #DivServices
-    {
-        background-color:#413737;
-        float:left;
-        height:600px;
-        border:3px solid black;
-    }
-    #DivBill
-    {
-        background-color:#8A857F;
-        height:600px;
-        border:3px solid black;
-       
-    }
-
-    #DivBody
-    {
-        background-color:#BBB5AF;
-        /*border:3px solid black;*/
-    }
-    #DivItem
-    {
-        float:left; 
-        height:600px; 
-        background-color:#808080;
-        border:3px solid black;
-    }
-
-    </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="row">
-            <div class="col-sm-2" id="DivServices">
-                 
+            <div class="col-sm-2">
+                <aside>
                     <center>
                         <asp:DropDownList ID="ddlService" CssClass="form-control" runat="server" AutoPostBack="True" onselectedindexchanged="ddlService_SelectedIndexChanged">           
                         </asp:DropDownList>
@@ -76,25 +44,27 @@
                         <asp:Repeater ID="rptrList" runat="server" >
                             <ItemTemplate>
                                 <tr>
-                                    <td align="center" width="100px"> <asp:LinkButton runat="server"  CommandArgument='<%#Eval("ServiceID") %>' Text='<%#Eval("ServiceName") %> ' OnClick="btnAdd_Click" ForeColor="Red"></asp:LinkButton> </td> 
+                                    <td> <asp:LinkButton runat="server"  CommandArgument='<%#Eval("ServiceID") %>' Text='<%#Eval("ServiceName") %> ' OnClick="btnAdd_Click" ForeColor="white"></asp:LinkButton> </td> 
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
                     </table>
-                
+                </aside>
             </div>
-        <div class="col-sm-3" id="DivItem">
+        <div class="col-sm-3">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>service Details:</h3>
-                    <asp:Label ID="lblServiceID" runat="server" Visible="false"></asp:Label>
-                    Service Name: 
-                    <asp:Label ID="lblServiceName" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
-                    Price:<br />
-                    <asp:TextBox CssClass="form-control" ID="txtServicePrice" Width="80%" runat="server"></asp:TextBox><br />
-                    Quantity:<br />
-                    <asp:TextBox CssClass="form-control" ID="txtServiceQyt" Width="80%" runat="server"></asp:TextBox><br />
-                    <asp:Button ID="btnAddToList" CssClass="btn btn-default" runat="server" Text="Add To Bill" OnClick="btnAddToList_Click" />
+                    
+                        <h3>service Details:</h3>
+                        <asp:Label ID="lblServiceID" runat="server" Visible="false"></asp:Label>
+                        Service Name: 
+                        <asp:Label ID="lblServiceName" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
+                        Price:<br />
+                        <asp:TextBox CssClass="form-control" ID="txtServicePrice" Width="80%" runat="server"></asp:TextBox><br />
+                        Quantity:<br />
+                        <asp:TextBox CssClass="form-control" ID="txtServiceQyt" Width="80%" runat="server"></asp:TextBox><br />
+                        <asp:Button ID="btnAddToList" CssClass="btn btn-default" runat="server" Text="Add To Bill" OnClick="btnAddToList_Click" />
+                    
                 </div>
             </div>
             <div class="row">
@@ -114,7 +84,8 @@
             </div>
        </div>
                         
-            <div class="col-sm-7" id="DivBill">
+            <div class="col-sm-7">
+                <div class="main-content">
                 <asp:Panel ID="pnlBilllist" runat="server">
                            <div id="DivBillList" style="height:350px;">
                                 <br />
@@ -230,6 +201,7 @@
                     <asp:Button runat="server" CssClass="btn btn-default" Text="print" OnClick="Unnamed1_Click" onClientClick="printContent('DivBilling')" />
         </div>
                         </asp:Panel>
+                </div>
             </div>
         </div>
 </asp:Content>
