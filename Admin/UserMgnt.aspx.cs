@@ -14,10 +14,10 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            PnlAddUser.Visible = true;
-            PnlEditUsers.Visible = false;
-            PnlChngAdminPW.Visible = false;
             UserID = 0;
+            lblCpassword.Text = "";
+            lblEMessage.Text = "";
+            loadUsers();
         }
 
     }
@@ -28,34 +28,6 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
     {
         rptrUsers.DataSource = BLLUsers.getallUser();
         rptrUsers.DataBind();
-    }
-
-    //Show panel to add new user 
-    protected void LnkAddUsers_Click(object sender, EventArgs e)
-    {
-        PnlAddUser.Visible = true;
-        PnlEditUsers.Visible = false;
-        PnlChngAdminPW.Visible = false;
-        lblMessage.Text = "";
-    }
-
-    //Show panel to Edit users
-    protected void LnkEditUsers_Click(object sender, EventArgs e)
-    {
-        PnlAddUser.Visible = false;
-        PnlEditUsers.Visible = true;
-        PnlChngAdminPW.Visible = false;
-        lblEMessage.Text = "";
-        loadUsers();
-    }
-
-    //Show panel to change Admin Password
-    protected void LnkChngPassword_Click(object sender, EventArgs e)
-    {
-        PnlAddUser.Visible = false;
-        PnlEditUsers.Visible = false;
-        PnlChngAdminPW.Visible = true;
-        lblCpassword.Text = "";
     }
 
     //Add new user to system
@@ -213,7 +185,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
         {
             if (BLLUsers.checckAdminPassword(txtOpass.Text))
             {
-                BLLUsers.ChangeAdminPassword(txtOpass.Text);
+                BLLUsers.ChangeAdminPassword(txtNpass.Text);
                 lblCpassword.Text = "Pasword successfully changed";
             }
             else

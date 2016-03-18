@@ -1,0 +1,11 @@
+﻿body {
+}
+aside {
+    background:#31302f;
+    padding:50px 15px;
+    color:#fff;
+    min-height:600px;
+}
+.main-content {
+    background:#fff;
+}

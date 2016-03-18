@@ -87,6 +87,7 @@
                 <a href="Services.aspx">Services</a>
                 <a href="Sales.aspx">Sales</a>
                 <a href="UserMgnt.aspx">User Management</a>
+                <asp:LinkButton runat="server" style="margin-left:700px" cssClass="pull-right" Text="Logout" OnClick="btnLogout_Click" ForeColor="white"></asp:LinkButton>
             </div>
         </div>
                 </div>

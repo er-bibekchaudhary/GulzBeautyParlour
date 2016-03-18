@@ -16,7 +16,6 @@ public partial class Admin_Services : System.Web.UI.Page
         if(!IsPostBack)
         {
             bindDDL();
-            pnlEditService.Visible = false;
         }
         BindCat();
         BindService();
@@ -246,13 +245,13 @@ public partial class Admin_Services : System.Web.UI.Page
     }
      protected void lnkAddService_Click(object sender, EventArgs e)
      {
-         pnlAdd.Visible = true;
-         pnlEditService.Visible = false;
+     //    pnlAdd.Visible = true;
+     //    pnlEditService.Visible = false;
      }
      protected void lnkEditService_Click(object sender, EventArgs e)
      {
-         pnlAdd.Visible = false;
-         pnlEditService.Visible = true;
+         //pnlAdd.Visible = false;
+         //pnlEditService.Visible = true;
      }
      public void shownotification()
      {

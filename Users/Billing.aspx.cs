@@ -14,6 +14,9 @@ public partial class Users_Billing : System.Web.UI.Page
         {
             Addeditems.Clear();
             bindDDL();
+
+            rptrList.DataSource = BllService.GetServiceByCategory(int.Parse(ddlService.SelectedValue));
+            rptrList.DataBind();
         }
     }
 

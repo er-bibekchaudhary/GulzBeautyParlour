@@ -1,87 +1,177 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="user.master.cs" Inherits="Users_user" %>
+﻿<%@ master language="C#" autoeventwireup="true" codefile="user.master.cs" inherits="Users_user" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    
+
     <link href="Bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="Bootstrap/UserStyle.css" rel="stylesheet" />
     <script src="Bootstrap/bootstrap.min.js"></script>
     <script src="Bootstrap/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function ShowNotification(show) {
+            if (show == true) {
+                document.getElementById('ChangePassword').style.display = "block";
+            }
+            else {
+                document.getElementById('ChangePassword').style.display = "none";
+            }
+        }
+    </script>
     <style type="text/css">
         .container {
-            max-width:1170px;
+            max-width: 1170px;
         }
+
         .header {
-            background:#fff;
-            padding:10px 0;
+            background: #fff;
+            padding: 10px 0;
         }
+
         .nav {
-            background:#9a0d1f;
+            background: #9a0d1f;
         }
+
         .navigation ul {
-            margin:0;
-            padding:0;
-            list-style:none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
-        .navigation ul:after {
-            content:"";
-            clear:both;
-            display:block;
-        }
-        .navigation ul li {
-            float:left;
-        }
-        .navigation ul li a {
-            padding:7px 15px;
-            display:inline-block;
-            text-decoration:none;
-            color:#fff;
-        }
-        .navigation ul li a:hover {
-            background:#c02d3f;
-        }
+
+            .navigation ul:after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+
+            .navigation ul li {
+                float: left;
+            }
+
+                .navigation ul li a {
+                    padding: 7px 15px;
+                    display: inline-block;
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+                    .navigation ul li a:hover {
+                        background: #c02d3f;
+                    }
+
         .content {
-            background:#fff;
+            background: #fff;
         }
+
         .footer {
-            background:#f00;
+            background: #c02d3f;
+        }
+
+        #ChangePassword {
+            border: 1px solid #333;
+            background: #fff;
+            width: 500px !important;
+            position: absolute;
+            left: 50% !important;
+            top: 0%;
+            margin: 200px 0 0 -180px;
+            z-index: 9999;
         }
     </style>
 
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 
 <body>
-<form id="form1" runat="server">
-    <div class="header">
-        <div class="container">
-            <h3 style="text-align:center;">Welcome to Galz Beauty Parlour Billings</h3>
-        </div>
-    </div>
-    <div class="nav">
-        <div class="container">
-            <div class="navigation">
-                <ul>
-                    <li><a href="Billing.aspx">Billing</a></li>
-                    <li><a href="Members.aspx">Members</a></li>
-                    <li><a href="Users.aspx">Account </a></li>
-                </ul>
+    <form id="form1" runat="server">
+        <div class="header">
+            <div class="container">
+                <h3 style="text-align: center;">Welcome to Galz Beauty Parlour Billings</h3>
             </div>
         </div>
-    </div>
-    <div class="content">
-        <div class="container">
-            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="nav">
+            <div class="container">
+                <div class="navigation">
+                    <ul>
+                        <li><a href="Billing.aspx">Billing</a></li>
+                        <li><a href="Members.aspx">Members</a></li>
+                        <li>
+                            <asp:linkbutton runat="server" text="Account" onclick="lnkChangePassword_Click" forecolor="white"></asp:linkbutton>
+                        </li>
+                        <li>
+                            <asp:linkbutton runat="server" style="margin-left: 800px" cssclass="pull-right" text="Logout" onclick="btnLogout_Click" forecolor="white"></asp:linkbutton>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="footer">
-        <div class="container">
+        <div class="content">
+            <div class="container">
+                <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+            </asp:contentplaceholder>
+            </div>
         </div>
-    </div>
-</form>
+        <div class="footer">
+            <div class="container">
+                <center>
+                <h4>Galz Beauty Parlour</h4>
+                Developed By: www.bibekchaudhary.com.np
+            </center>
+            </div>
+        </div>
+
+        <div id="ChangePassword" style="display: none;">
+            <div id="ChangePasswordHeader" style="background-color: green; padding: 10px 15px; color: #fff">
+                Change Password
+            </div>
+            <div id="ChangePasswordContent" style="background-color: white">
+                <div class="container-fluid">
+                    <br />
+                    <br />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="Category" class="col-sm-4 control-label">Old Password:</label>
+                        <div class="col-sm-8">
+                            <asp:textbox id="txtOpass" runat="server" CssClass="form-control" placeholder="Old Password" textmode="Password"></asp:textbox>
+                        </div>
+                    </div>
+                    
+                         <div class="form-group">
+                        <label for="Category" class="col-sm-4 control-label">New Password:</label>
+                        <div class="col-sm-8">
+                            <asp:textbox id="txtNpass" runat="server" CssClass="form-control" placeholder="New Password" textmode="Password"></asp:textbox>
+                       </div>
+                    </div>
+
+                   <div class="form-group">
+                        <label for="Category" class="col-sm-4 control-label">Re-Enter New Password:</label>
+                        <div class="col-sm-8">
+                            <asp:textbox id="txtRNpass" runat="server" CssClass="form-control" placeholder="Conform Password" textmode="Password"></asp:textbox>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                            <center><asp:Label ID="lblCpassword" runat="server" ForeColor="Red" Text=""></asp:Label></center>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                                                <div class="col-sm-offset-4 col-sm-4">
+                            <asp:button id="BtnChangePassword" runat="Server" CssClass="btn btn-success" text="Change Password" onclick="BtnChangePassword_Click" />
+                        </div>
+                                                    <div class="col-sm-4">
+
+                            <button class="btn btn-danger pull-right" style="margin: 0 10px 10px 0;"><a href="#" style="color: #fff;" onclick="ShowNotification(0);Popup.hide('modal');return false;">Cancel</a></button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </form>
 </body>
 </html>

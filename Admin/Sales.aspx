@@ -60,21 +60,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentBody" Runat="Server">
 <div id="divMenu" class="container">
     <div class="row">
-        <div class="col-sm-3">
-    
-            <ol>
-                
-                
-                    <li><asp:LinkButton ID="LnkCheckSales" runat="server">Check Sales</asp:LinkButton></li>
-                    <li><asp:LinkButton ID="LnkPrintMonth" runat="server">Print Monthly report</asp:LinkButton></li>
-                
-               
-            </ol>
-        </div>
-        
-        <div class="col-sm-9" id="divContext">
-            <br />
-            <div class="row">
+       
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                     Month: <asp:DropDownList ID="ddlMonth" runat="server">
@@ -106,13 +92,11 @@
                     <asp:Button ID="btnGetMonthsReport" runat="server" Text="Get Report" OnClick="btnGetMonthsReport_Click" />
                 </div>
                 <div class="col-sm-2"></div>
-            </div>   
-        </div>
-    </div>
+            </div> 
     <div class="row">
-        <div class="col-sm-5">
-            <asp:Panel ID="PnlMonthlySale" runat="server">
-                <table>
+        <div class="col-sm-12">
+            <asp:Panel ID="PnlMonthlySale" runat="server" visible="false">
+                <table class="table table-responsive">
                     <caption><h4>Detail Sales on Month of : <asp:Label ID="lblMonthYear" runat="server" Text="" ForeColor="Red"></asp:Label></h4> </caption> 
                     <tr>
                         <th>Date of sales</th>
@@ -143,11 +127,10 @@
                     </tr>
             </table>
             </asp:Panel>
-        </div>
-
-        <div class="col-sm-7">
-            <asp:Panel ID="PnlDailySale" runat="server">
-                <table>
+       
+            <asp:Panel ID="PnlDailySale" runat="server" visible="false">
+                <asp:Button ID="btnMonthly" runat="server" Text="<< Back" OnClick="btnMonthly_Click" />
+                <table class="table table-responsive">
                     <caption><h4>Detail Sales of Date: <asp:Label ID="lblDateofSales" runat="server" Text="" ForeColor="Red"></asp:Label></h4> </caption> 
                     <tr>
                         <th>Bill No.</th>

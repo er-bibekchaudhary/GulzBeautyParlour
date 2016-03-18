@@ -36,10 +36,17 @@ public partial class Admin_Sales : System.Web.UI.Page
         rptrMonthlyReport.DataBind();
         lblMonthYear.Text = ddlMonth.SelectedItem.Text + " " + ddlYear.SelectedItem.Text;
     }
+
+    protected void btnMonthly_Click(object sender, EventArgs e)
+    {
+        PnlMonthlySale.Visible = true;
+        PnlDailySale.Visible = false;
+    }
     protected void ViewDaily_Click(object sender, EventArgs e)
     {
         DateTime date = Convert.ToDateTime((sender as LinkButton).CommandArgument.ToString());
         string date1 = date.ToShortDateString();
+        PnlMonthlySale.Visible = false;
         PnlDailySale.Visible = true;
         lblDateofSales.Text = date.ToLongDateString().ToString();
         DataTable dt = BLLSales.GetReportBydate(date1);

@@ -23,4 +23,11 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
             Response.Redirect("../Default.aspx");
         }
     }
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session["FullName"] = null;
+        Session["UserGroup"] = null;
+        Session["UserID"] = null;
+        Response.Redirect("../Default.aspx");
+    }
 }
