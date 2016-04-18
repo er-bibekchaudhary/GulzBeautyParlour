@@ -30,6 +30,7 @@ public partial class Users_Billing : System.Web.UI.Page
         lblServiceName.Text = _service.ServiceName;
         txtServicePrice.Text = _service.rate.ToString();
         txtServiceQyt.Text = "1";
+        showItems();
     }
     #endregion
     //bind choice of Services
@@ -114,6 +115,7 @@ public partial class Users_Billing : System.Web.UI.Page
         Addeditems.Add(_sales);
         getTotal();
         bindBill();
+        hideItems();
     }
 
     //After print
@@ -125,5 +127,14 @@ public partial class Users_Billing : System.Web.UI.Page
         bindBill();
         getTotal();
         clearform();
+    }
+
+    public void showItems()
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowItems(1)", true);
+    }
+    public void hideItems()
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowItems(0)", true);
     }
 }

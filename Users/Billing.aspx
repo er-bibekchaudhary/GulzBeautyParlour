@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Users/user.master" AutoEventWireup="true" CodeFile="Billing.aspx.cs" Inherits="Users_Billing" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        #divNotification,#divItems,#divMembers {
+            border: 1px solid #333;
+            background: #fff;
+            width: 347px !important;
+            position: absolute;
+            left: 50% !important;
+            top: 0%;
+            margin: 200px 0 0 -180px;
+            z-index: 9999;
+        }
+    </style>
     <script type="text/javascript">
         <!--
         function printContent(id) {
@@ -29,11 +41,30 @@
             newwin.document.close()
         }
         //-->
+        </script>
+        <script type="text/javascript">
+            
+        function ShowItems(show) {
+            if (show == true) {
+                document.getElementById('divItems').style.display = "block";
+            }
+            else {
+                document.getElementById('divItems').style.display = "none";
+            }
+        }
+        function ShowMembers(show) {
+            if (show == true) {
+                document.getElementById('divMembers').style.display = "block";
+            }
+            else {
+                document.getElementById('divMembers').style.display = "none";
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <aside>
                     <center>
                         <asp:DropDownList ID="ddlService" CssClass="form-control" runat="server" AutoPostBack="True" onselectedindexchanged="ddlService_SelectedIndexChanged">           
@@ -51,40 +82,9 @@
                     </table>
                 </aside>
             </div>
-        <div class="col-sm-3">
-            <div class="row">
-                <div class="col-sm-12">
-                    
-                        <h3>service Details:</h3>
-                        <asp:Label ID="lblServiceID" runat="server" Visible="false"></asp:Label>
-                        Service Name: 
-                        <asp:Label ID="lblServiceName" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
-                        Price:<br />
-                        <asp:TextBox CssClass="form-control" ID="txtServicePrice" Width="80%" runat="server"></asp:TextBox><br />
-                        Quantity:<br />
-                        <asp:TextBox CssClass="form-control" ID="txtServiceQyt" Width="80%" runat="server"></asp:TextBox><br />
-                        <asp:Button ID="btnAddToList" CssClass="btn btn-default" runat="server" Text="Add To Bill" OnClick="btnAddToList_Click" />
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr />
-                    <h3>Customer Details:</h3>
-                    Valid Till: 
-                    <asp:Label ID="lblValidDate" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
-                    Discount Percentage: 
-                    <asp:Label ID="lblDiscount" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br /><br />
-                    Membership Number:<br />
-                    <asp:TextBox CssClass="form-control" ID="txtMemberShipID" Width="80%" runat="server"  placeHolder="Membership ID"></asp:TextBox><br />
-                    Customer Name: <br />
-                    <asp:TextBox ID="txtCustomername" Width="80%" CssClass="form-control" runat="server" placeHolder="Customer Name"></asp:TextBox><br />
-                    <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Get Member"/>
-                </div>
-            </div>
-       </div>
+        
                         
-            <div class="col-sm-7">
+            <div class="col-sm-9">
                 <div class="main-content">
                 <asp:Panel ID="pnlBilllist" runat="server">
                            <div id="DivBillList" style="height:350px;">
@@ -204,5 +204,47 @@
                 </div>
             </div>
         </div>
+
+    <div id="divItems" style="display: none;" >
+        <div id="divServiceHeader" style="background-color: green; padding: 10px 15px; color: #fff">
+           Service/Items
+        </div>
+         <div class="row">
+                <div class="col-sm-12">
+                    
+                        <h3>service Details:</h3>
+                        <asp:Label ID="lblServiceID" runat="server" Visible="false"></asp:Label>
+                        Service Name: 
+                        <asp:Label ID="lblServiceName" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
+                        Price:<br />
+                        <asp:TextBox CssClass="form-control" ID="txtServicePrice" Width="80%" runat="server"></asp:TextBox><br />
+                        Quantity:<br />
+                        <asp:TextBox CssClass="form-control" ID="txtServiceQyt" Width="80%" runat="server"></asp:TextBox><br />
+                        <asp:Button ID="btnAddToList" CssClass="btn btn-default" runat="server" Text="Add To Bill" OnClick="btnAddToList_Click" />
+                    
+                </div>
+            </div>
+    </div>
+
+    <div id="divMembers" style="display: none;">
+        <div id="divMembersHeader" style="background-color: green; padding: 10px 15px; color: #fff">
+           Member Search
+        </div>
+         <div class="row">
+                <div class="col-sm-12">
+                    <hr />
+                    <h3>Customer Details:</h3>
+                    Valid Till: 
+                    <asp:Label ID="lblValidDate" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br />
+                    Discount Percentage: 
+                    <asp:Label ID="lblDiscount" runat="server" Text="" ForeColor="#6666ff"></asp:Label><br /><br />
+                    Membership Number:<br />
+                    <asp:TextBox CssClass="form-control" ID="txtMemberShipID" Width="80%" runat="server"  placeHolder="Membership ID"></asp:TextBox><br />
+                    Customer Name: <br />
+                    <asp:TextBox ID="txtCustomername" Width="80%" CssClass="form-control" runat="server" placeHolder="Customer Name"></asp:TextBox><br />
+                    <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Get Member"/>
+                </div>
+            </div>
+    </div>
 </asp:Content>
 
