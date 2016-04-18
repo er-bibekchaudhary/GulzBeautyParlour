@@ -13,10 +13,13 @@ public partial class Admin_Services : System.Web.UI.Page
     static int CatID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
-            bindDDL();
+            addcategoy.Visible = true;
+            addservice.Visible = false;
+            EditService.Visible = false;        
         }
+        bindDDL();
         BindCat();
         BindService();
         
@@ -47,6 +50,26 @@ public partial class Admin_Services : System.Web.UI.Page
         rptrService.DataBind();
     }
 
+    protected void Lnkaddcategoy_Click(object sender, EventArgs e)
+    {
+        addcategoy.Visible= true;
+        addservice.Visible = false;
+        EditService.Visible = false;
+    }
+
+    protected void Lnkaddservice_Click(object sender, EventArgs e)
+    {
+        addcategoy.Visible = false;
+        addservice.Visible = true;
+        EditService.Visible = false;
+    }
+
+    protected void LnkEditService_Click(object sender, EventArgs e)
+    {
+        addcategoy.Visible = false;
+        addservice.Visible = false;
+        EditService.Visible = true;
+    }
     protected void btnAddCategory_Click(object sender, EventArgs e)
     {
         int flag = 0;
@@ -96,8 +119,18 @@ public partial class Admin_Services : System.Web.UI.Page
         btnAddCategory.Visible = false;
         btnSaveCategory.Visible = true;
         btnDelCategory.Visible = true;
+        btnCancelCategory.Visible = true;
     }
-    
+
+    protected void btncancelCategory_Click(object sender, EventArgs e)
+    {
+        CatID = 0;
+        txtCategory.Text = "";
+        btnAddCategory.Visible = true;
+        btnSaveCategory.Visible =false;
+        btnDelCategory.Visible = false;
+        btnCancelCategory.Visible = false;
+    }
 
      //Load Service in Edit panel
      protected void btnLoad_Click(object sender, EventArgs e)
@@ -124,6 +157,7 @@ public partial class Admin_Services : System.Web.UI.Page
                  btnAddCategory.Visible = true;
                  btnSaveCategory.Visible = false;
                  btnDelCategory.Visible = false;
+                 btnCancelCategory.Visible = false;
              }
 
              catch (Exception ex)
@@ -144,6 +178,7 @@ public partial class Admin_Services : System.Web.UI.Page
          btnAddCategory.Visible = true;
          btnSaveCategory.Visible = false;
          btnDelCategory.Visible = false;
+         btnCancelCategory.Visible = false;
      }
      protected void btnAddService_Click(object sender, EventArgs e)
      {
@@ -243,16 +278,7 @@ public partial class Admin_Services : System.Web.UI.Page
         txtPriceEdit.Text = "";
         txtServiceEdit.Text = "";
     }
-     protected void lnkAddService_Click(object sender, EventArgs e)
-     {
-     //    pnlAdd.Visible = true;
-     //    pnlEditService.Visible = false;
-     }
-     protected void lnkEditService_Click(object sender, EventArgs e)
-     {
-         //pnlAdd.Visible = false;
-         //pnlEditService.Visible = true;
-     }
+     
      public void shownotification()
      {
          ////GlobalFunctions.RegisterJSCode()

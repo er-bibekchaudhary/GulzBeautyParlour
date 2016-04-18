@@ -43,6 +43,10 @@
     font-weight:bold;
     color:#B0C4DB;  
 }
+         #divPageBody {
+             height:450px;
+             overflow: scroll;
+         }
         
         #divPageBody ul
         {
@@ -69,7 +73,7 @@
     <form id="form1" runat="server">
         <div id="divHeader">
     <div class="container">
-        <divclass="row">
+        <div class="row">
             <div  class="col-sm-2">
                 <img src="../Assets/Images/admin.jpg" height='120px' width='120px'/>
             </div>
@@ -78,6 +82,7 @@
                 <h3>Admin Panel</h3>
             </div>
             
+        </div>
         </div>
         </div>
         <div class="SiteNav">
@@ -100,9 +105,9 @@
  
     <div class="footer">
         <p>Galz Beauty Parlour</p>
+        Powered By: http://www.bibekchaudhary.com.np
     </div>
 
-</div>
     </form>
 </body>
 </html>

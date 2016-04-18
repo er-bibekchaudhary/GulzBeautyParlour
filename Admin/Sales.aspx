@@ -58,12 +58,13 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentBody" Runat="Server">
+    <br />
 <div id="divMenu" class="container">
     <div class="row">
        
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
-                    Month: <asp:DropDownList ID="ddlMonth" runat="server">
+                    Month: <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control">
                         <asp:ListItem Value="1">January</asp:ListItem>
                         <asp:ListItem Value="2">February</asp:ListItem>
                         <asp:ListItem Value="3">March</asp:ListItem>
@@ -80,7 +81,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-sm-3">
-                    Year : <asp:DropDownList ID="ddlYear" runat="server">
+                    Year : <asp:DropDownList ID="ddlYear" runat="server" CssClass="form-control">
                         <asp:ListItem Value="2015">2015</asp:ListItem>
                         <asp:ListItem Value="2016">2016</asp:ListItem>
                         <asp:ListItem Value="2017">2017</asp:ListItem>
@@ -89,7 +90,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="btnGetMonthsReport" runat="server" Text="Get Report" OnClick="btnGetMonthsReport_Click" />
+                    <asp:Button ID="btnGetMonthsReport" runat="server" cssClass="btn btn-success" Text="Get Report" OnClick="btnGetMonthsReport_Click" />
                 </div>
                 <div class="col-sm-2"></div>
             </div> 
@@ -98,12 +99,16 @@
             <asp:Panel ID="PnlMonthlySale" runat="server" visible="false">
                 <table class="table table-responsive">
                     <caption><h4>Detail Sales on Month of : <asp:Label ID="lblMonthYear" runat="server" Text="" ForeColor="Red"></asp:Label></h4> </caption> 
-                    <tr>
-                        <th>Date of sales</th>
-                        <th>Total Amount </th>
-                        <th>Total Discount</th>
-                        <th>Net Income</th>
-                    </tr>
+                    <thead style="background-color:aqua">
+
+                        <tr>
+                            <th>Date of sales</th>
+                            <th>Total Amount </th>
+                            <th>Total Discount</th>
+                            <th>Net Income</th>
+                        </tr>
+                    </thead>
+                    
                 
                 <asp:Repeater ID="rptrMonthlyReport" runat="server">
                     <ItemTemplate>
@@ -132,7 +137,8 @@
                 <asp:Button ID="btnMonthly" runat="server" Text="<< Back" OnClick="btnMonthly_Click" />
                 <table class="table table-responsive">
                     <caption><h4>Detail Sales of Date: <asp:Label ID="lblDateofSales" runat="server" Text="" ForeColor="Red"></asp:Label></h4> </caption> 
-                    <tr>
+                   <thead style="background-color:aqua">
+                     <tr>
                         <th>Bill No.</th>
                         <th>Customer Name</th>
                         <th>Sold By</th>
@@ -140,6 +146,7 @@
                         <th>Discount %</th>
                         <th>Net Amount</th>
                     </tr>
+                       </thead>
                     <asp:Repeater ID="rptrDaily" runat="server">
                         <ItemTemplate>
                             <tr>

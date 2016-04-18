@@ -53,17 +53,17 @@
 <asp:content id="Content3" contentplaceholderid="ContentBody" runat="Server">
     <br />
     <br />
-    <div id="divMenu" class="container">
+    <div role="tabpanel" id="divMenu" class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#addcategoy" aria-controls="home" role="tab" data-toggle="tab">Add Category</a></li>
-    <li role="presentation"><a href="#addservice" aria-controls="profile" role="tab" data-toggle="tab">Add Service</a></li>
-    <li role="presentation"><a href="#EditService" aria-controls="profile" role="tab" data-toggle="tab">Edit Servicece</a></li>
+    <li role="presentation"><asp:LinkButton ID="Lnkaddcategoy" runat="server" role="tab" OnClick="Lnkaddcategoy_Click">Add Category</asp:LinkButton></li>
+    <li role="presentation"><asp:LinkButton ID="Lnkaddservice" runat="server" role="tab" OnClick="Lnkaddservice_Click">Add Service</asp:LinkButton></li>
+    <li role="presentation"><asp:LinkButton ID="LnkEditService" runat="server" role="tab" OnClick="LnkEditService_Click">Edit Servicece</asp:LinkButton></li>
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="addcategoy">
+  <div role="tabpanel" >
+    <asp:panel runat="server" ID="addcategoy">
 
              <h3>Add Category</h3>
 
@@ -78,7 +78,8 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <asp:Button ID="btnAddCategory" runat="server" Text="Add Category" CssClass="btn btn-success" OnClick="btnAddCategory_Click" />
                         <asp:Button ID="btnSaveCategory" runat="server" Text="Save Category" CssClass="btn btn-success" Visible="false" OnClick="btnSaveCategory_Click" />
-                        <asp:Button ID="btnDelCategory" runat="server" Text="Delete Category" CssClass="btn btn-danger" Visible="false" OnClick="btnDelCategory_Click" />         
+                        <asp:Button ID="btnDelCategory" runat="server" Text="Delete Category" CssClass="btn btn-danger" Visible="false" OnClick="btnDelCategory_Click" /> 
+                        <asp:Button ID="btnCancelCategory" runat="server" Text="Cancel" CssClass="btn btn-info" Visible="false" OnClick="btncancelCategory_Click" />        
                     </div>
                   </div>
 
@@ -102,8 +103,8 @@
              </div>
 
 
-    </div>
-    <div role="tabpanel" class="tab-pane" id="addservice">
+    </asp:panel>
+    <asp:panel  runat="server" class="tab-pane" ID="addservice">
         <h3>Add Service</h3>
         <div class="form-horizontal">
                   <div class="form-group">
@@ -131,8 +132,8 @@
                     </div>
                   </div>
                 </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="EditService">
+    </asp:panel>
+    <asp:panel runat="server" class="tab-pane" ID="EditService">
         <div class="container">
                                 <div class="row">
                                     <div class="col-sm-2">
@@ -182,10 +183,9 @@
                                 </div>
                             </div>
     </div>
-    </div>
+    </asp:panel>
   </div>
-        
-  </div>
+  </div>       
 
 
     <div id="divNotification" style="display: none;">

@@ -44,14 +44,15 @@
     <div class="row">
         <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#AddUsers" aria-controls="home" role="tab" data-toggle="tab">Add Users</a></li>
-    <li role="presentation"><a href="#EditUsers" aria-controls="profile" role="tab" data-toggle="tab">Edit Users</a></li>
-    <li role="presentation"><a href="#ChngPassword" aria-controls="profile" role="tab" data-toggle="tab">Admin Password</a></li>
+    <li role="presentation"><asp:LinkButton ID="LnkAddUsers" runat="server" role="tab" OnClick="LnkAddUsers_Click">Add Users</asp:LinkButton></li>
+    <li role="presentation"><asp:LinkButton ID="LnkEditUsers" runat="server" role="tab" OnClick="LnkEditUsers_Click">Edit Users</asp:LinkButton></li>
+    <li role="presentation"><asp:LinkButton ID="LnkChngPassword" runat="server" role="tab" OnClick="LnkChngPassword_Click">Admin Password</asp:LinkButton></li>
+   
   </ul>
 
         
-        <div class="tab-content">
-               <div role="tabpanel" class="tab-pane active" id="AddUsers">
+        <div role="tabpanel">
+               <asp:panel runat="server" ID="AddUsers">
         <h3>Add Users</h3>
                <div class="form-horizontal">
                   <div class="form-group">
@@ -64,7 +65,7 @@
                   <div class="form-group">
                     <label for="txtFirstName" class="col-sm-2 control-label">First Name:</label>
                     <div class="col-sm-10">
-                            <td><asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeHolder="First Name"></asp:TextBox> 
+                        <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeHolder="First Name"></asp:TextBox> 
                     </div>
                   </div>
 
@@ -91,7 +92,7 @@
 
                  <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <center><asp:Label ID="lblMessage" runat="server" ForeColor="Red" Text=""></asp:Label></center>
+                        <center><asp:Label ID="lblMessage1" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                     </div>
                   </div>
                        
@@ -101,9 +102,9 @@
                     </div>
                   </div>
                     </div>
-               </div>
+               </asp:panel>
 
-                <div role="tabpanel" class="tab-pane" id="EditUsers">
+                <asp:panel runat="server" ID="EditUsers">
         <h3>Edit Users</h3>
                     <div class="container">
                         <div class="row">
@@ -118,78 +119,81 @@
                                 </asp:Repeater>
                             </div>
                             <div class="col-sm-10"> 
-                                    <table style="padding:10px;">
-                                        <tr>
-                                            <td>User Name: </td>
-                                            <td><asp:TextBox ID="txtUnameEdit" runat="server" placeHolder="User Name"></asp:TextBox></td>
-                                        </tr>
+                                   <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="txtUnameEdit" class="col-sm-2 control-label">User Name: </label>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="txtUnameEdit" runat="server" placeHolder="User Name"></asp:TextBox>
+                                            </div>
+                                        </div>
 
-                                        <tr>
-                                            <td>First Name: </td>
-                                            <td><asp:TextBox ID="txtFnameEdit" runat="server" placeHolder="First Name"></asp:TextBox></td>
-                                        </tr>
+                                        <div class="form-group">
+                                            <label for="txtFnameEdit" class="col-sm-2 control-label">First Name: </label>
+                                            <div class="col-sm-10"><asp:TextBox ID="txtFnameEdit" runat="server" placeHolder="First Name"></asp:TextBox></div>
+                                        </div>
 
-                                        <tr>
-                                            <td>Last Name: </td>
-                                            <td><asp:TextBox ID="txtLnameEdit" runat="server" placeHolder="Last Name"></asp:TextBox></td>
-                                        </tr>   
+                                        <div class="form-group">
+                                            <label for="txtLnameEdit" class="col-sm-2 control-label">Last Name: </label>
+                                            <div class="col-sm-10"><asp:TextBox ID="txtLnameEdit" runat="server" placeHolder="Last Name"></asp:TextBox></div>
+                                        </div>   
     
-                                        <tr>
-                                            <td colspan='2'><center><asp:Label ID="lblEMessage" runat="server" ForeColor="Red" Text=""></asp:Label></center></td>
-                                        </tr>
+                                        <div class="form-group">
+                                            <div class="col-sm-12"><center><asp:Label ID="lblEMessage" runat="server" ForeColor="Red" Text=""></asp:Label></center></div>
+                                        </div>
 
-                                        <tr>
-                                            <td colspan='2'>
-                                                <asp:Button ID="btnEdit" runat="Server" Text="Save" onclick="btnEdit_Click"/> 
-                                                <asp:Button ID="btnResetPassword" runat="Server" onclick="btnResetPassword_Click" Text="Reset Password" Style="margin-left:10px" />
-                                                <asp:Button ID="btnDelUser" runat="Server" Text="Delete User" onclick="btnDelUser_Click"  Style="margin-left:10px"/>                                                   
-                                            </td>
-                                        </tr>
-                                    </table>
+                                        <div class="form-group">
+                                           <div class="col-sm-offset-2 col-sm-10">
+                                                <asp:Button ID="btnEdit" runat="Server" CssClass="btn btn-success" Text="Save" onclick="btnEdit_Click"/> 
+                                                <asp:Button ID="btnResetPassword" runat="Server" CssClass="btn btn-info" onclick="btnResetPassword_Click" Text="Reset Password" Style="margin-left:10px" />
+                                                <asp:Button ID="btnDelUser" runat="Server" Text="Delete User" CssClass="btn btn-danger" onclick="btnDelUser_Click"  Style="margin-left:10px"/>                                                   
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                         </div>
                     </div> 
-                </div>
+                 </asp:panel>
 
-                <div role="tabpanel" class="tab-pane" id="ChngPassword">
+                <asp:panel runat="server" ID="ChngPassword">
         <h3>Change Admin Password</h3>
-                    <table>
-                        <tr style="margin:10px">
-                            <td>Old Password:</td>
-                            <td><asp:TextBox ID="txtOpass" runat="server" placeHolder="Old Password" TextMode="Password"></asp:TextBox></td>
-                        </tr>
+                    <div class="form-horizontal">
+                       <div class="form-group">
+                            <label for="txtOpass" class="col-sm-2 control-label">Old Password:</label>
+                            <div class="col-sm-10"><asp:TextBox ID="txtOpass" runat="server" placeHolder="Old Password" TextMode="Password"></asp:TextBox></div>
+                        </div>
 
-                        <tr style="margin:10px">
-                            <td>New Password:</td>
-                            <td><asp:TextBox ID="txtNpass" runat="server" placeHolder="New Password" TextMode="Password"></asp:TextBox></td>
-                        </tr>
+                        <div class="form-group">
+                            <label for="txtNpass" class="col-sm-2 control-label">New Password:</label>
+                            <div class="col-sm-10"><asp:TextBox ID="txtNpass" runat="server" placeHolder="New Password" TextMode="Password"></asp:TextBox></div>
+                        </div>
 
-                        <tr>
-                            <td>Re-Enter New Password:</td>
-                            <td><asp:TextBox ID="txtRNpass" runat="server" placeHolder="Conform Password" TextMode="Password"></asp:TextBox></td>
-                        </tr>
+                        <div class="form-group">
+                            <label for="txtRNpass" class="col-sm-2 control-label">Re-Enter New Password:</label>
+                            <div class="col-sm-10"><asp:TextBox ID="txtRNpass" runat="server" placeHolder="Conform Password" TextMode="Password"></asp:TextBox></div>
+                        </div>
 
-                        <tr>
-                            <td colspan='2'><center><asp:Label ID="lblCpassword" runat="server" ForeColor="Red" Text=""></asp:Label></center></td>
-                        </tr>
+                        <div class="form-group">
+                            <div class="col-sm-12"><center><asp:Label ID="lblCpassword" runat="server" ForeColor="Red" Text=""></asp:Label></center></div>
+                        </div>
 
-                        <tr>
-                            <td colspan='2'><asp:Button ID="BtnChangeAdmin" runat="Server" Text="Change Password" onclick="BtnChangeAdmin_Click"/> </td>
-                        </tr>
-                    </table>
-                </div>
+                        <div class="form-group">
+                           <div class="col-sm-offset-2 col-sm-10"><asp:Button ID="BtnChangeAdmin" CssClass="btn btn-success" runat="Server" Text="Change Password" onclick="BtnChangeAdmin_Click"/> </div>
+                        </div>
+                    </div>
+                 </asp:panel>
         </div>
-    </div>    
-</div>
+    </div> 
+    </div>   
 
-< <div id="divNotification" style="display: none;">
+
+<div id="divNotification" style="display: none;">
         <div id="divNotificationHeader" style="background-color: green; padding: 10px 15px; color: #fff">
             Gulz Beauty Parlour
         </div>
         <div id="divNotificationContent" style="background-color: white">
             <br />
             <center><strong>
-                <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label></strong></center>
+                <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label></strong></center>
             <br />
             <button class="btn btn-success pull-right" style="margin:0 10px 10px 0;"><a href="#" style="color:#fff;" onclick="ShowNotification(0);Popup.hide('modal');return false;">OK</a></button>
         </div>

@@ -43,7 +43,7 @@
 <body background="Assets/Images/Vector1.jpg">
     <form id="form1" runat="server">
     <div id="DivWelcome">
-    <center><h3>Welcome to Gulz Beauty Parlour</h3> </center>
+    <center><h3>Welcome to Galz Beauty Parlour</h3> </center>
     
     </div>
     <div id="DivLogin">

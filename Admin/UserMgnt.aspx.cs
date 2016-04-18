@@ -14,12 +14,15 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            AddUsers.Visible = true;
+            EditUsers.Visible = false;
+            ChngPassword.Visible = false;
             UserID = 0;
             lblCpassword.Text = "";
             lblEMessage.Text = "";
-            loadUsers();
+            lblMessage.Text = "";
         }
-
+        loadUsers();
     }
     
 
@@ -40,6 +43,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 lblMessage.Text = "Enter Your UserName";
                 flag = 1;
+                shownotification();
             }
         }
 
@@ -49,6 +53,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 lblMessage.Text = "Enter Your First Name";
                 flag = 1;
+                shownotification();
             }
         }
 
@@ -58,6 +63,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 lblMessage.Text = "Enter Your Last Name";
                 flag = 1;
+                shownotification();
             }
         }
 
@@ -67,6 +73,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 lblMessage.Text = "Enter Password";
                 flag = 1;
+                shownotification();
             }
         }
 
@@ -85,6 +92,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 lblMessage.Text = "UserName already Exists";
                 flag = 1;
+                shownotification();
             }
         }
 
@@ -94,6 +102,7 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 flag = 1;
                 lblMessage.Text="Password Doesnt Match";
+                shownotification();
             }
         }
 
@@ -109,10 +118,12 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             {
                 BLLUsers.CreateUser(_user);
                 lblMessage.Text = "User Successfully Created";
+                shownotification();
             }
             catch (Exception ex)
             {
                 lblMessage.Text = ex.Message.ToString();
+                shownotification();
             }
         }
     }
@@ -142,18 +153,20 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
     protected void btnResetPassword_Click(object sender, EventArgs e)
     {
         BLLUsers.ChangeUserPassword("password123", UserID);
-        lblEMessage.Text = "New Password is \"password123\"";
+        lblMessage.Text = "New Password is \"password123\"";
+        shownotification();
     }
 
     //Delete users
     protected void btnDelUser_Click(object sender, EventArgs e)
     {
         BLLUsers.DeleteUser(UserID);
-        lblEMessage.Text = "User Succesfully Deleted";
+        lblMessage.Text = "User Succesfully Deleted";
         txtFnameEdit.Text = "";
         txtLnameEdit.Text = "";
         txtUnameEdit.Text = "";
         loadUsers();
+        shownotification();
     }
 
     //Edit user table
@@ -168,13 +181,15 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
         try
         {
             BLLUsers.EditUser(_user);
-            lblEMessage.Text = "User Succesfully Changed";
+            lblMessage.Text = "User Succesfully Changed";
 
             loadUsers();
+            shownotification();
         }
         catch (Exception ex)
         {
-            lblEMessage.Text = ex.Message;
+            lblMessage.Text = ex.Message;
+            shownotification();
         }
     }
 
@@ -186,17 +201,40 @@ public partial class Admin_UserMgnt : System.Web.UI.Page
             if (BLLUsers.checckAdminPassword(txtOpass.Text))
             {
                 BLLUsers.ChangeAdminPassword(txtNpass.Text);
-                lblCpassword.Text = "Pasword successfully changed";
+                lblMessage.Text = "Pasword successfully changed";
+                shownotification();
             }
             else
             {
-                lblCpassword.Text = "Old is Password Incorrect";
+                lblMessage.Text = "Old is Password Incorrect";
+                shownotification();
             }
         }
         else
         {
-            lblCpassword.Text = "Password Does not Match";
+            lblMessage.Text = "Password Does not Match";
+            shownotification();
         }
+    }
+    protected void LnkAddUsers_Click(object sender, EventArgs e)
+    {
+        AddUsers.Visible = true;
+        EditUsers.Visible = false;
+        ChngPassword.Visible = false;
+    }
+
+    protected void LnkEditUsers_Click(object sender, EventArgs e)
+    {
+        AddUsers.Visible = false;
+        EditUsers.Visible = true;
+        ChngPassword.Visible = false;
+    }
+
+    protected void LnkChngPassword_Click(object sender, EventArgs e)
+    {
+        AddUsers.Visible = false;
+        EditUsers.Visible = false;
+        ChngPassword.Visible = true;
     }
 
     public void shownotification()

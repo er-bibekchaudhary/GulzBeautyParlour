@@ -15,7 +15,7 @@ public partial class Admin_Bill : System.Web.UI.Page
 
             BillInfo _bill = BLLSales.getbillbyid(id);
             lblCustomerName.Text = _bill.CustomerName;
-            lblDate.Text = _bill.salesDate.Date.ToString();
+            lblDate.Text = _bill.salesDate.ToShortDateString();
             lblsoldby.Text = _bill.SoldBy;
             lbltotal.Text = _bill.TotalAmount.ToString();
             lblbillNO.Text = _bill.BillID.ToString();
