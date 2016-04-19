@@ -63,6 +63,6 @@ public partial class Users_user : System.Web.UI.MasterPage
         //sb.Append(@"alert("+text+")");
         //sb.Append(@"</");
         //sb.Append(@"script>");
-        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowNotification(1)", true);
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowChangePassword(1)", true);
     }
 }

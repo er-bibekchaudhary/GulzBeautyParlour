@@ -39,6 +39,8 @@
             top:0%;
             margin:200px 0 0 -180px;
             z-index: 9999;
+            -webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+            box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
         }
         
     </style>

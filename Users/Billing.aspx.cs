@@ -68,6 +68,28 @@ public partial class Users_Billing : System.Web.UI.Page
             sells.SalesID = Sno;
             Sno = Sno + 1;
         }
+
+        if (txtDiscountPercent.Text == "")
+        {
+            lblNetAmount.Text = total.ToString();
+            lblNetAmountPrint.Text = total.ToString();
+            lblDiscountAmount.Text = "";
+            lblDiscountAmountPrint.Text = "";
+        }
+        else
+        {
+            lblDiscountPercentage.Text = txtDiscountPercent.Text;
+            lblDiscountPercentPrint.Text = txtDiscountPercent.Text;
+
+            double discount = (total / 100) * int.Parse(txtDiscountPercent.Text);
+
+            lblDiscountAmount.Text = discount.ToString();
+            lblDiscountAmountPrint.Text = discount.ToString();
+
+            lblNetAmount.Text = (total-discount).ToString();
+            lblNetAmountPrint.Text = (total - discount).ToString();
+        }
+
         lblTotal.Text = total.ToString();
         lblTotalPrint.Text = total.ToString();
 
@@ -99,8 +121,13 @@ public partial class Users_Billing : System.Web.UI.Page
     public void clearform()
     {
         txtCustomername.Text = "";
+        txtMemberShipID.Text = "";
         txtServicePrice.Text = "";
+        lblDiscountPercentage.Text = "";
+        lblDiscountPercentPrint.Text = "";
+        lnkshowMembers.Text = "Click Here";
         txtServiceQyt.Text = "";
+        txtDiscountPercent.Text = "";
         lblTotal.Text = "";
         lblServiceName.Text = "";
     }
@@ -113,9 +140,27 @@ public partial class Users_Billing : System.Web.UI.Page
         _sales.Quantity = int.Parse(txtServiceQyt.Text);
         _sales.Amount = _sales.Rate * _sales.Quantity;
         Addeditems.Add(_sales);
-        getTotal();
         bindBill();
         hideItems();
+        getTotal();
+    }
+
+    protected void btnAddToList1_Click(object sender, EventArgs e)
+    {
+        hideItems();
+        hideMembers();
+    }
+
+
+    protected void btnDoneMembers_Click(object sender, EventArgs e)
+    {
+        lnkshowMembers.Text = txtCustomername.Text;
+        hideMembers();
+        getTotal();
+    }
+    protected void lnkshowMembers_Click(object sender, EventArgs e)
+    {
+        showMembers();
     }
 
     //After print
@@ -125,8 +170,8 @@ public partial class Users_Billing : System.Web.UI.Page
         pnlBilllist.Visible = true;
         Addeditems.Clear();
         bindBill();
-        getTotal();
         clearform();
+        getTotal();
     }
 
     public void showItems()
@@ -136,5 +181,13 @@ public partial class Users_Billing : System.Web.UI.Page
     public void hideItems()
     {
         ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowItems(0)", true);
+    }
+    public void showMembers()
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowMembers(1)", true);
+    }
+    public void hideMembers()
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowMembers(0)", true);
     }
 }
