@@ -38,7 +38,13 @@
                     </ItemTemplate>
                 </asp:Repeater>
                 <tr class="bordered">
-                        <td colspan="3">Total:<asp:Label ID="lbltotal" runat="server" Text="" ForeColor="Red" /></td>
+                        <td colspan="3">Total Amount:<asp:Label ID="lbltotal" runat="server" Text="" ForeColor="Red" /></td>
+                </tr>
+                <tr class="bordered">
+                        <td colspan="3">Discount:<asp:Label ID="lblDiscount" runat="server" Text="" ForeColor="Red" /></td>
+                </tr>
+                <tr class="bordered">
+                        <td colspan="3">Net Amount:<asp:Label ID="lblnetAmount" runat="server" Text="" ForeColor="Red" /></td>
                 </tr>
                 <tr>
                     <td align="right">sold by:<asp:Label ID="lblsoldby" runat="server" Text="" ForeColor="Red" /></td>

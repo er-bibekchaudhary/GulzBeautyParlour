@@ -73,8 +73,8 @@ public partial class Users_Billing : System.Web.UI.Page
         {
             lblNetAmount.Text = total.ToString();
             lblNetAmountPrint.Text = total.ToString();
-            lblDiscountAmount.Text = "";
-            lblDiscountAmountPrint.Text = "";
+            lblDiscountAmount.Text = "0";
+            lblDiscountAmountPrint.Text = "0";
         }
         else
         {
@@ -102,18 +102,18 @@ public partial class Users_Billing : System.Web.UI.Page
         {
             lblCustomerName.Text = txtCustomername.Text;
             lblBillNO.Text = savebill().ToString();
-            lblDate.Text = DateTime.Now.ToShortTimeString();
+            lblDate.Text = DateTime.Now.ToLongDateString();
             lblSoldBY.Text = Session["FullName"].ToString();
             pnlBilllist.Visible = false;
             pnlBillPrint.Visible = true;
         }
     }
-
+   
     //savebill
     public int savebill()
     {
         int userID = int.Parse(Session["UserID"].ToString());
-        int billid = BLLSales.saveBill(txtCustomername.Text,userID, 0, Convert.ToDouble(lblTotal.Text), Convert.ToDouble(lblTotal.Text));
+        int billid = BLLSales.saveBill(txtCustomername.Text,userID, int.Parse(lblDiscountAmount.Text), Convert.ToDouble(lblTotal.Text), Convert.ToDouble(lblNetAmount.Text));
         BLLSales.savesales(Addeditems, billid);
         return billid;
     }
@@ -158,6 +158,29 @@ public partial class Users_Billing : System.Web.UI.Page
         hideMembers();
         getTotal();
     }
+
+    protected void BtnGetMembers_Click(object sender, EventArgs e)
+    {
+        if(txtMemberShipID.Text=="")
+        {
+            lblMessage.Text="Please Enter Membership Number";
+            showMessage();
+        }
+        else{
+            try
+            {
+                MemberInfo _member = BLLMembers.getMemberByID(int.Parse(txtMemberShipID.Text));
+                txtCustomername.Text = _member.FirstName + " " + _member.LastName;
+                showMembers();
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Member Not Found";
+                showMessage();
+            }
+        }
+        
+    }
     protected void lnkshowMembers_Click(object sender, EventArgs e)
     {
         showMembers();
@@ -189,5 +212,9 @@ public partial class Users_Billing : System.Web.UI.Page
     public void hideMembers()
     {
         ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowMembers(0)", true);
+    }
+    public void showMessage()
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Alert", "ShowMessage(1)", true);
     }
 }

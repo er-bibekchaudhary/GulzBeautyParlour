@@ -45,10 +45,10 @@
     <script>
         function ShowMessage(show) {
             if (show == true) {
-                document.getElementById('divNotification').style.display = "block";
+                document.getElementById('divMessage').style.display = "block";
             }
             else {
-                document.getElementById('divNotification').style.display = "none";
+                document.getElementById('divMessage').style.display = "none";
             }
         }
 
@@ -85,7 +85,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <table id="tblMemebers">
-                            <thead>
+                            <thead style="background-color:teal">
                                 <tr>
                                     <th>Memebership ID</th>
                                     <th>Full Name</th>
@@ -100,7 +100,9 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td><%#Eval("MemberId") %></td>
-                                        <td><%#Eval("FirstName") %> <%#Eval("LastName") %></td>
+                                        <td>
+                                            <asp:LinkButton runat="server" CommandArgument='<%#Eval("MemberId") %>' Text='<%#Eval("FirstName")+" "+Eval("LastName")%>' OnClick="LnkEdit_Click"></asp:LinkButton>
+                                        </td>
                                         <td><%#Eval("Address") %></td>
                                         <td><%#Eval("PhoneNumber") %></td>
                                         <td><%#Eval("CreatedDate") %></td>
@@ -162,7 +164,7 @@
     </div>
   </asp:Panel>
 
-     <div id="divEdit">
+     <div id="divEdit" style="display: none;">
         <div id="divEditHeader" style="background-color: green; padding: 10px 15px; color: #fff">
            Edit Members
         </div>
@@ -173,37 +175,37 @@
         <div class="col-sm-12">
              <div class="form-horizontal">
                  <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">MembershipID: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-3 control-label">MembershipID: </label>
+                    <div class="col-sm-9">
                         <asp:Label runat="server" ID="lblMembersID" Text="" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">First Name: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-3 control-label">First Name: </label>
+                    <div class="col-sm-9">
                         <asp:TextBox ID="txtFirstNameEdit" runat="server" placeholder="First Name"  Cssclass="form-control" type="text" ></asp:TextBox></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">Last Name: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-3 control-label">Last Name: </label>
+                    <div class="col-sm-9">
                         <asp:TextBox ID="txtLastNameEdit" runat="server" type="text" Cssclass="form-control" placeholder="Last Name" ></asp:TextBox></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">Address: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-3 control-label">Address: </label>
+                    <div class="col-sm-9">
                         <asp:TextBox ID="txtAddressEdit" runat="server" type="text"  Cssclass="form-control" placeholder="Address" ></asp:TextBox></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">Phone Number: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-3 control-label">Phone Number: </label>
+                    <div class="col-sm-9">
                         <asp:TextBox runat="server" ID="txtPhoneEdit"  Cssclass="form-control" placeholder="Phone Number" type="text" ></asp:TextBox></div>
                 </div>
                  <div class="form-group">
-                    <label for="Category" class="col-sm-2 control-label">Renew Membership: </label>
-                    <div class="col-sm-10">
+                    <label for="Category" class="col-sm-4 control-label">Renew Membership: </label>
+                    <div class="col-sm-8">
                         <asp:CheckBox runat="server" ID="chkUpdateMembership" />
                     </div>
                 </div>

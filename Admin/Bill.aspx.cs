@@ -18,6 +18,8 @@ public partial class Admin_Bill : System.Web.UI.Page
             lblDate.Text = _bill.salesDate.ToShortDateString();
             lblsoldby.Text = _bill.SoldBy;
             lbltotal.Text = _bill.TotalAmount.ToString();
+            lblDiscount.Text = _bill.DiscountAmount.ToString();
+            lblnetAmount.Text = _bill.NetAmount.ToString();
             lblbillNO.Text = _bill.BillID.ToString();
 
             rptrbill.DataSource = BLLSales.getsells(id);

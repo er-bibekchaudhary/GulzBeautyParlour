@@ -87,6 +87,7 @@ public class BLLMembers
             _Reader.Read();
 
             MemberInfo _Member = new MemberInfo();
+            _Member.MemberId = id;
             _Member.FirstName = (_Reader["FirstName"].ToString());
             _Member.LastName = (_Reader["LastName"].ToString());
             _Member.Address = (_Reader["Address"].ToString());
@@ -112,7 +113,6 @@ public class BLLMembers
         cmd.Parameters.Add(new SqlParameter("@LastName", Member.LastName));
         cmd.Parameters.Add(new SqlParameter("@Address", Member.Address));
         cmd.Parameters.Add(new SqlParameter("@PhoneNumber", Member.PhoneNumber));
-        cmd.Parameters.Add(new SqlParameter("@CreatedDate", Member.CreatedDate));
         cmd.Parameters.Add(new SqlParameter("@ValidUpto", Member.ValidUpto));
         cmd.CommandType=CommandType.StoredProcedure;
 

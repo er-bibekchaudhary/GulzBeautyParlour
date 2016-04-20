@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
-        #divNotification, #divMembers {
+        #divMessage, #divMembers {
             border: 1px solid #333;
             background: #fff;
             width: 347px !important;
@@ -32,12 +32,13 @@
             padding-right:20px;
         }
 
+
     </style>
     <script type="text/javascript">
         <!--
     function printContent(id) {
         str = document.getElementById(id).innerHTML
-        newwin = window.open('', 'printwin', 'left=100,top=100,width=400')
+        newwin = window.open('', 'printwin', 'left=100,top=100,width=700')
         newwin.document.write('<HTML>\n<HEAD>\n')
         newwin.document.write('<script>\n')
         newwin.document.write('function chkstate(){\n')
@@ -78,6 +79,14 @@
             }
             else {
                 document.getElementById('divMembers').style.display = "none";
+            }
+        }
+        function ShowMessage(show) {
+            if (show == true) {
+                document.getElementById('divMessage').style.display = "block";
+            }
+            else {
+                document.getElementById('divMessage').style.display = "none";
             }
         }
     </script>
@@ -171,7 +180,8 @@
                                 </tr>
                         </table>
                         <hr />
-                        <asp:Button ID="btnAddTobill" CssClass="btn btn-default" runat="server" Text="Done" OnClick="btnAddTobill_Click" />
+                        <asp:Button ID="btnAddTobill" CssClass="btn btn-success" runat="server" Text="Done" OnClick="btnAddTobill_Click" />
+                        <asp:Button ID="btnClear" CssClass="btn btn-danger" runat="server" Text="Clear" OnClick="Unnamed1_Click" />
                     </div>
 
                     <br />
@@ -333,11 +343,24 @@
                 </fieldset>
                 
             <fieldset class="form-group">
-                    <asp:Button ID="BtnGetMembers" CssClass="btn btn-info" runat="server" Text="Get Member" />
+                    <asp:Button ID="BtnGetMembers" CssClass="btn btn-info" runat="server" Text="Get Member" OnClick="BtnGetMembers_Click" />
                 <asp:Button ID="btnDoneMembers" CssClass="btn btn-success" runat="server" Text="Done" OnClick="btnDoneMembers_Click" />
             </fieldset>
                 
             </div>
+    </div>
+
+     <div id="divMessage" style="display: none;">
+        <div id="divMessageHeader" style="background-color: green; padding: 10px 15px; color: #fff">
+            Gulz Beauty Parlour
+        </div>
+        <div id="divMessageContent" style="background-color: white">
+            <br />
+            <center><strong>
+                <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label></strong></center>
+            <br />
+            <button class="btn btn-success pull-right" style="margin:0 10px 10px 0;"><a href="#" style="color:#fff;" onclick="ShowMessage(0);Popup.hide('modal');return false;">OK</a></button>
+        </div>
     </div>
 </asp:Content>
 

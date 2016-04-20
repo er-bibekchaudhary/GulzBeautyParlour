@@ -15,6 +15,7 @@ public partial class Users_Members : System.Web.UI.Page
             pnlAddMembers.Visible = false;
             pnlListMembers.Visible = true;
         }
+        bindMembers();
     }
     protected void btnshowAdd_Click(object sender, EventArgs e)
     {
@@ -109,6 +110,17 @@ public partial class Users_Members : System.Web.UI.Page
         txtLastName.Text = "";
         txtAddress.Text = "";
         txtPhoneNumber.Text = "";
+    }
+    protected void LnkEdit_Click(object sender, EventArgs e)
+    {
+        int ID = int.Parse((sender as LinkButton).CommandArgument);
+        MemberInfo _Member = BLLMembers.getMemberByID(ID);
+        lblMembersID.Text = ID.ToString();
+        txtFirstNameEdit.Text = _Member.FirstName;
+        txtLastNameEdit.Text =  _Member.LastName;
+        txtAddressEdit.Text = _Member.Address;
+        txtPhoneEdit.Text = _Member.PhoneNumber;
+        showEdit();
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
